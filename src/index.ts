@@ -2,6 +2,7 @@ import express from "express";
 import { WsProvider, ApiPromise } from "@polkadot/api";
 import { TradeRouter, PoolService } from '@galacticcouncil/sdk';
 import { HydrationSwapInput } from "./HydrationSwapInput";
+import { buildTransferExtrinsics } from "@paraspell/xcm-router";
 const app = express();
 const port = 8000;
 
@@ -26,9 +27,27 @@ setInterval(connect, 1000 * 60 * 60 * 24);
 app.get('/all-assets', async (req, res) => {
   await connect()
 
-  // Do something
   const result = await tradeRouter.getAllAssets();    
   res.send(result);
+});
+
+app.get('/xcm', async (req, res) => {
+  await connect()
+
+  const address = ""
+
+  const extrinsic = await buildTransferExtrinsics({
+    from: 'Polkadot', //Origin Parachain/Relay chain
+    to: 'Interlay', //Destination Parachain/Relay chain
+    currencyFrom: 'DOT', // Currency to send
+    currencyTo: 'INTR', // Currency to receive
+    amount: '100000', // Amount to send
+    slippagePct: '1', // Max slipppage percentage
+    injectorAddress: address, //Injector address
+    recipientAddress: address,
+  })
+
+  res.send(extrinsic);
 });
 
 app.post('/dot-price', async (req, res) => {

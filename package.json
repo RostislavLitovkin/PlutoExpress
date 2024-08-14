@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "tsc && node dist/index.js"
   },
   "dependencies": {
     "@galacticcouncil/sdk": "^4.0.2",
+    "@paraspell/xcm-router": "^1.2.1",
     "@polkadot/api": "^12.2.1",
     "express": "^4.19.2"
   },
