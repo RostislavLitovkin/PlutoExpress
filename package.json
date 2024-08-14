@@ -8,6 +8,8 @@
     "start": "tsc && node dist/index.js"
   },
   "dependencies": {
+    "@acala-network/chopsticks-core": "^0.13.2",
+    "@acala-network/chopsticks-db": "^0.13.2",
     "@galacticcouncil/sdk": "^4.0.2",
     "@paraspell/xcm-router": "^1.2.1",
     "@polkadot/api": "^12.2.1",
