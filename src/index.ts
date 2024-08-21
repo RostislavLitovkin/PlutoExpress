@@ -9,8 +9,11 @@ import { blake2AsHex } from "@polkadot/util-crypto"
 import "@polkadot/api-augment"
 import { ChopsticksEventsOutput } from "./ChopsticksEventsOutput"
 import { hexToU8a } from "@polkadot/util"
+import { disconnect } from "process"
+import { error } from "console"
 
 const app = express()
+let chain: any = null
 // Middleware to parse JSON bodies
 app.use(express.json())
 const port = 8000
@@ -30,6 +33,14 @@ const connect = async () => {
   await poolService.syncRegistry()
   tradeRouter = new TradeRouter(poolService)
 }
+
+async function disconnectChopstics() {
+  if (chain === null) return;
+
+  await chain.api.disconnect()
+  await chain.close()
+  console.log('Disconnected!')
+} 
 
 setInterval(connect, 1000 * 60 * 60 * 24)
 
@@ -58,7 +69,8 @@ app.post("/get-extrinsic-events", async (req, res) => {
     return
   }
 
-  const chain = await setup({
+  await disconnectChopstics()
+  chain = await setup({
     endpoint: input.endpoint,
     block: null,
     mockSignatureHost: true,
@@ -86,7 +98,7 @@ app.post("/get-extrinsic-events", async (req, res) => {
       },
     })
 
-    await new Promise<void>((resolve) => {
+    new Promise<void>((resolve) => {
       try {
         api.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
           if (status.isInBlock) {
@@ -129,11 +141,14 @@ app.post("/get-extrinsic-events", async (req, res) => {
 
       resolve()
     })
+
   } catch (e) {
     res.status(404)
   }
-  res.status(404)
+  res.status(404)  
 })
+
+
 
 // Chopstics API
 app.post("/dry-run-extrinsic", async (req, res) => {
@@ -144,7 +159,8 @@ app.post("/dry-run-extrinsic", async (req, res) => {
     return
   }
 
-  const chain = await setup({
+  await disconnectChopstics()
+  chain = await setup({
     endpoint: input.endpoint,
     block: 22090231,
     mockSignatureHost: true,
@@ -168,3 +184,4 @@ app.post("/dry-run-extrinsic", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`)
 })
+
