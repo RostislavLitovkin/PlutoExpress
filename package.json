@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node dist/index.js"
+    "copy-files": "copyfiles src/ClaimAirdrop/*.csv dist/",
+    "build": "tsc && yarn copy-files",
+    "start": "yarn build && node dist/index.js"
   },
   "dependencies": {
     "@acala-network/chopsticks-core": "^0.13.2",
@@ -12,9 +14,11 @@
     "@galacticcouncil/sdk": "^4.0.2",
     "@paraspell/xcm-router": "^1.2.1",
     "@polkadot/api": "^12.2.1",
+    "cors": "^2.8.5",
     "express": "^4.19.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.11",
     "ts-node": "^10.9.2",

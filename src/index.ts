@@ -9,10 +9,16 @@ import { blake2AsHex } from "@polkadot/util-crypto"
 import "@polkadot/api-augment"
 import { ChopsticksEventsOutput } from "./ChopsticksEventsOutput"
 import { hexToU8a } from "@polkadot/util"
+import { claimAirdrop } from "./ClaimAirdrop/ClaimAirdrop"
+import cors from "cors"
 
 const app = express()
 // Middleware to parse JSON bodies
 app.use(express.json())
+app.use(cors())
+
+claimAirdrop(app)
+
 const port = 8000
 
 let tradeRouter: TradeRouter
@@ -93,14 +99,14 @@ app.post("/get-extrinsic-events", async (req, res) => {
             try {
               const blockHash = status.asInBlock // Get the block hash
               const signedBlock = await api.rpc.chain.getBlock(blockHash) // Get the block details
-             
+
               const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
 
               // Find the extrinsic index in the block
               const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
                 ext => ext.hash.toHex() === extrinsicHash
               )
-               
+
               const allEvents = await api.query.system.events(status.createdAtHash)
 
               const result: ChopsticksEventsOutput = {
