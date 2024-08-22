@@ -39,7 +39,7 @@ async function disconnectChopstics() {
 
   await chain.api.disconnect()
   await chain.close()
-  console.log('Disconnected!')
+  // console.log('Disconnected!')
 } 
 
 setInterval(connect, 1000 * 60 * 60 * 24)
@@ -98,9 +98,9 @@ app.post("/get-extrinsic-events", async (req, res) => {
       },
     })
 
-    new Promise<void>((resolve) => {
+    await new Promise<void>(async (resolve) => {
       try {
-        api.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
+        await api.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
           if (status.isInBlock) {
             try {
               const blockHash = status.asInBlock // Get the block hash
@@ -145,6 +145,8 @@ app.post("/get-extrinsic-events", async (req, res) => {
   } catch (e) {
     res.status(404)
   }
+  console.log("Disconecting!")
+
   res.status(404)  
 })
 
