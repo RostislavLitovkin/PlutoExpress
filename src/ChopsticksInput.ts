@@ -5,3 +5,12 @@ export interface ChopsticksInput {
     extrinsic: HexString
     address: string
 }
+
+export interface XcmChopsticksInput {
+    fromEndpoint: string
+    toEndpoint: string
+    extrinsic: HexString
+    fromId: number
+    toId: number
+    relay: string
+}

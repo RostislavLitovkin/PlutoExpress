@@ -2,15 +2,16 @@ import express from "express"
 import { WsProvider, ApiPromise } from "@polkadot/api"
 import { TradeRouter, PoolService } from "@galacticcouncil/sdk"
 import { HydrationSwapInput } from "./HydrationSwapInput"
-import { ChopsticksProvider, setStorage, setup } from "@acala-network/chopsticks-core"
-import { ChopsticksInput } from "./ChopsticksInput"
+import { ChopsticksProvider, setStorage, setup, connectHorizontal } from "@acala-network/chopsticks-core"
+import { ChopsticksInput, XcmChopsticksInput } from "./ChopsticksInput"
 import { SqliteDatabase } from "@acala-network/chopsticks-db"
 import { blake2AsHex } from "@polkadot/util-crypto"
 import "@polkadot/api-augment"
-import { ChopsticksEventsOutput } from "./ChopsticksEventsOutput"
+import { ChopsticksEventsOutput, XcmChopsticksEventsOutput } from "./ChopsticksEventsOutput"
 import { hexToU8a } from "@polkadot/util"
 import { disconnect } from "process"
 import { error } from "console"
+import { createApi } from "./helpers/fatchEvents"
 
 const app = express()
 let chain: any = null
@@ -150,6 +151,119 @@ app.post("/get-extrinsic-events", async (req, res) => {
   res.status(404)  
 })
 
+// XCM Chopsticks API
+app.post("/get-xcm-extrinsic-events", async (req, res) => {
+  console.log("request-body: ", req.body)
+  const input = req.body as XcmChopsticksInput
+  if (input == null || input == undefined) {
+    res.status(400).send("No chopsticks input provided!")
+    return
+  }
+
+  await disconnectChopstics()
+  const fromChain = await setup({
+    endpoint: input.fromEndpoint,
+    block: null,
+    mockSignatureHost: true,
+    db: new SqliteDatabase("cache"),
+  })
+  await disconnectChopstics()
+  const toChain = await setup({
+    endpoint: input.toEndpoint,
+    block: null,
+    mockSignatureHost: true,
+    db: new SqliteDatabase("cache"),
+  })
+
+  const fromId = input.fromId 
+  const toId = input.toId 
+  await connectHorizontal({
+    fromId: fromChain,
+    toId: toChain,
+  })
+
+  try {
+    const fromApi = await createApi(fromChain)
+    const toApi = await createApi(toChain)
+
+    await setStorage(fromChain, {
+      System: {
+        Account: [
+          [
+            ["5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"],
+            {
+              providers: 1,
+              data: {
+                free: "1000000000000000000",
+              },
+            },
+          ]
+        ],
+      },
+    })
+
+    await new Promise<void>(async (resolve) => {
+      try {
+        await fromApi.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
+          if (status.isInBlock) {
+            try {
+              const blockHash = status.asInBlock // Get the block hash
+              const signedBlock = await fromApi.rpc.chain.getBlock(blockHash) // Get the block details
+             
+              const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
+
+              // Find the extrinsic index in the block
+              const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
+                ext => ext.hash.toHex() === extrinsicHash
+              )
+               
+              const allFromEvents = await fromApi.query.system.events(status.createdAtHash)
+              const allToEvents = await toApi.query.system.events()
+
+              const fromResult: ChopsticksEventsOutput = {
+                events: allFromEvents.toHex(),
+                extrinsicIndex
+              }
+
+              const toResult: ChopsticksEventsOutput = {
+                events: allToEvents.toHex(),
+                extrinsicIndex: -1
+              }
+
+              const result: XcmChopsticksEventsOutput = {
+                fromEvents: fromResult,
+                toEvents: toResult
+              }
+
+              console.log(result)
+              res.send(result)
+            }
+            catch {
+
+            }
+            resolve()
+          }
+          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped || status.isNone || status.isEmpty) {
+            res.status(404)
+
+            resolve()
+          }
+        })
+      }
+      catch (e) {
+        res.status(404)
+      }
+
+      resolve()
+    })
+
+  } catch (e) {
+    res.status(404)
+  }
+  console.log("Disconecting!")
+
+  res.status(404)  
+})
 
 
 // Chopstics API
