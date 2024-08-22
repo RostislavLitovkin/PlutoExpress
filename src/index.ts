@@ -15,7 +15,6 @@ import { error } from "console"
 import { createApi } from "./helpers/fatchEvents"
 
 const app = express()
-let chain: any = null
 // Middleware to parse JSON bodies
 app.use(express.json())
 const port = 8000
@@ -35,14 +34,6 @@ const connect = async () => {
   await poolService.syncRegistry()
   tradeRouter = new TradeRouter(poolService)
 }
-
-async function disconnectChopstics() {
-  if (chain === null) return;
-
-  await chain.api.disconnect()
-  await chain.close()
-  // console.log('Disconnected!')
-} 
 
 setInterval(connect, 1000 * 60 * 60 * 24)
 
@@ -71,10 +62,9 @@ app.post("/get-extrinsic-events", async (req, res) => {
     return
   }
 
-  await disconnectChopstics()
-  chain = await setup({
-    endpoint: input.endpoint,
-    block: null,
+  const chain = await setup({
+    endpoint: input.fromEndpoint,
+    block: input.fromBlockNumber,
     mockSignatureHost: true,
     db: new SqliteDatabase("cache"),
   })
@@ -161,14 +151,13 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
     return
   }
 
-  await disconnectChopstics()
   const fromChain = await setup({
     endpoint: input.fromEndpoint,
     block: null,
     mockSignatureHost: true,
     db: new SqliteDatabase("cache"),
   })
-  await disconnectChopstics()
+  
   const toChain = await setup({
     endpoint: input.toEndpoint,
     block: null,
@@ -228,7 +217,7 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
 
               const toResult: ChopsticksEventsOutput = {
                 events: allToEvents.toHex(),
-                extrinsicIndex: -1
+                extrinsicIndex: 0
               }
 
               const result: XcmChopsticksEventsOutput = {
@@ -236,7 +225,9 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
                 toEvents: toResult
               }
 
-              console.log(result)
+              console.log(result.fromEvents.events.length)
+              console.log(result.toEvents.events.length)
+
               res.send(result)
             }
             catch {
@@ -276,10 +267,9 @@ app.post("/dry-run-extrinsic", async (req, res) => {
     return
   }
 
-  await disconnectChopstics()
-  chain = await setup({
-    endpoint: input.endpoint,
-    block: 22090231,
+  const chain = await setup({
+    endpoint: input.fromEndpoint,
+    block: input.fromBlockNumber,
     mockSignatureHost: true,
     db: undefined, //new IdbDatabase("cache"),
   })
@@ -287,7 +277,7 @@ app.post("/dry-run-extrinsic", async (req, res) => {
   try {
     const { outcome, storageDiff } = await chain.dryRunExtrinsic({
       call: input.extrinsic,
-      address: input.address,
+      address: ""//input.address,
     })
     const dryRunResult = JSON.stringify({ outcome: outcome.toHuman(), storageDiff }, null, 2)
     res.send(dryRunResult)
