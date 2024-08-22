@@ -9,5 +9,5 @@ Allows access to javascript libraries from c# and other languages.
 ```
 yarn
 
-yarn dev
+yarn start
 ```
