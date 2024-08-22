@@ -2,7 +2,8 @@ import express from "express"
 import { WsProvider, ApiPromise } from "@polkadot/api"
 import { TradeRouter, PoolService } from "@galacticcouncil/sdk"
 import { HydrationSwapInput } from "./HydrationSwapInput"
-import { ChopsticksProvider, setStorage, setup, connectHorizontal } from "@acala-network/chopsticks-core"
+import { ChopsticksProvider, connectParachains, setStorage, setup } from "@acala-network/chopsticks-core"
+
 import { ChopsticksInput, XcmChopsticksInput } from "./ChopsticksInput"
 import { SqliteDatabase } from "@acala-network/chopsticks-db"
 import { blake2AsHex } from "@polkadot/util-crypto"
@@ -177,10 +178,10 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
 
   const fromId = input.fromId 
   const toId = input.toId 
-  await connectHorizontal({
-    fromId: fromChain,
-    toId: toChain,
-  })
+  await connectParachains([
+    fromChain,
+    toChain,
+  ])
 
   try {
     const fromApi = await createApi(fromChain)
