@@ -2,13 +2,17 @@ import express from "express"
 import { WsProvider, ApiPromise } from "@polkadot/api"
 import { TradeRouter, PoolService } from "@galacticcouncil/sdk"
 import { HydrationSwapInput } from "./HydrationSwapInput"
-import { ChopsticksProvider, setStorage, setup } from "@acala-network/chopsticks-core"
-import { ChopsticksInput } from "./ChopsticksInput"
+import { ChopsticksProvider, connectParachains, setStorage, setup } from "@acala-network/chopsticks-core"
+
+import { ChopsticksInput, XcmChopsticksInput } from "./ChopsticksInput"
 import { SqliteDatabase } from "@acala-network/chopsticks-db"
 import { blake2AsHex } from "@polkadot/util-crypto"
 import "@polkadot/api-augment"
-import { ChopsticksEventsOutput } from "./ChopsticksEventsOutput"
+import { ChopsticksEventsOutput, XcmChopsticksEventsOutput } from "./ChopsticksEventsOutput"
 import { hexToU8a } from "@polkadot/util"
+import { disconnect } from "process"
+import { error } from "console"
+import { createApi } from "./helpers/fatchEvents"
 
 const app = express()
 // Middleware to parse JSON bodies
@@ -59,8 +63,8 @@ app.post("/get-extrinsic-events", async (req, res) => {
   }
 
   const chain = await setup({
-    endpoint: input.endpoint,
-    block: null,
+    endpoint: input.fromEndpoint,
+    block: input.fromBlockNumber,
     mockSignatureHost: true,
     db: new SqliteDatabase("cache"),
   })
@@ -86,9 +90,9 @@ app.post("/get-extrinsic-events", async (req, res) => {
       },
     })
 
-    await new Promise<void>((resolve) => {
+    await new Promise<void>(async (resolve) => {
       try {
-        api.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
+        await api.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
           if (status.isInBlock) {
             try {
               const blockHash = status.asInBlock // Get the block hash
@@ -129,11 +133,130 @@ app.post("/get-extrinsic-events", async (req, res) => {
 
       resolve()
     })
+
   } catch (e) {
     res.status(404)
   }
-  res.status(404)
+  console.log("Disconecting!")
+
+  res.status(404)  
 })
+
+// XCM Chopsticks API
+app.post("/get-xcm-extrinsic-events", async (req, res) => {
+  console.log("request-body: ", req.body)
+  const input = req.body as XcmChopsticksInput
+  if (input == null || input == undefined) {
+    res.status(400).send("No chopsticks input provided!")
+    return
+  }
+
+  const fromChain = await setup({
+    endpoint: input.fromEndpoint,
+    block: null,
+    mockSignatureHost: true,
+    db: new SqliteDatabase("cache"),
+  })
+  
+  const toChain = await setup({
+    endpoint: input.toEndpoint,
+    block: null,
+    mockSignatureHost: true,
+    db: new SqliteDatabase("cache"),
+  })
+
+  const fromId = input.fromId 
+  const toId = input.toId 
+  await connectParachains([
+    fromChain,
+    toChain,
+  ])
+
+  try {
+    const fromApi = await createApi(fromChain)
+    const toApi = await createApi(toChain)
+
+    await setStorage(fromChain, {
+      System: {
+        Account: [
+          [
+            ["5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"],
+            {
+              providers: 1,
+              data: {
+                free: "1000000000000000000",
+              },
+            },
+          ]
+        ],
+      },
+    })
+
+    await new Promise<void>(async (resolve) => {
+      try {
+        await fromApi.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
+          if (status.isInBlock) {
+            try {
+              const blockHash = status.asInBlock // Get the block hash
+              const signedBlock = await fromApi.rpc.chain.getBlock(blockHash) // Get the block details
+             
+              const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
+
+              // Find the extrinsic index in the block
+              const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
+                ext => ext.hash.toHex() === extrinsicHash
+              )
+               
+              const allFromEvents = await fromApi.query.system.events(status.createdAtHash)
+              const allToEvents = await toApi.query.system.events()
+
+              const fromResult: ChopsticksEventsOutput = {
+                events: allFromEvents.toHex(),
+                extrinsicIndex
+              }
+
+              const toResult: ChopsticksEventsOutput = {
+                events: allToEvents.toHex(),
+                extrinsicIndex: 0
+              }
+
+              const result: XcmChopsticksEventsOutput = {
+                fromEvents: fromResult,
+                toEvents: toResult
+              }
+
+              console.log(result.fromEvents.events.length)
+              console.log(result.toEvents.events.length)
+
+              res.send(result)
+            }
+            catch {
+
+            }
+            resolve()
+          }
+          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped || status.isNone || status.isEmpty) {
+            res.status(404)
+
+            resolve()
+          }
+        })
+      }
+      catch (e) {
+        res.status(404)
+      }
+
+      resolve()
+    })
+
+  } catch (e) {
+    res.status(404)
+  }
+  console.log("Disconecting!")
+
+  res.status(404)  
+})
+
 
 // Chopstics API
 app.post("/dry-run-extrinsic", async (req, res) => {
@@ -145,8 +268,8 @@ app.post("/dry-run-extrinsic", async (req, res) => {
   }
 
   const chain = await setup({
-    endpoint: input.endpoint,
-    block: 22090231,
+    endpoint: input.fromEndpoint,
+    block: input.fromBlockNumber,
     mockSignatureHost: true,
     db: undefined, //new IdbDatabase("cache"),
   })
@@ -154,7 +277,7 @@ app.post("/dry-run-extrinsic", async (req, res) => {
   try {
     const { outcome, storageDiff } = await chain.dryRunExtrinsic({
       call: input.extrinsic,
-      address: input.address,
+      address: ""//input.address,
     })
     const dryRunResult = JSON.stringify({ outcome: outcome.toHuman(), storageDiff }, null, 2)
     res.send(dryRunResult)
@@ -168,3 +291,4 @@ app.post("/dry-run-extrinsic", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`)
 })
+

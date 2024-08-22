@@ -1,7 +1,14 @@
 import { HexString } from '@polkadot/util/types'
 
 export interface ChopsticksInput {
-    endpoint: string
+    fromEndpoint: string
+    fromBlockNumber: number
     extrinsic: HexString
-    address: string
+}
+
+export interface XcmChopsticksInput extends ChopsticksInput {
+    toEndpoint: string
+    fromId: number
+    toId: number
+    relay: string
 }

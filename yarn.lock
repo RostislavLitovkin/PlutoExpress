@@ -40,7 +40,28 @@
     "@babel/runtime" "^7.10.2"
     bignumber.js "^9.0.0"
 
-"@acala-network/chopsticks-core@0.13.2", "@acala-network/chopsticks-core@^0.13.2":
+"@acala-network/chopsticks-core@0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-0.13.3.tgz#5036def73979ca27c5d31dbdfb52fbabf8748783"
+  integrity sha512-Jxdn+Kkhd/uy++0BCusMB8PoKCXMBVJoSXmSgZGCLcP95n2PvQ1Mkx6CXjzWGx62EkfyrEicm4A7ZKuEB3bKJg==
+  dependencies:
+    "@acala-network/chopsticks-executor" "0.13.3"
+    "@polkadot/rpc-provider" "^12.3.1"
+    "@polkadot/types" "^12.3.1"
+    "@polkadot/types-codec" "^12.3.1"
+    "@polkadot/types-known" "^12.3.1"
+    "@polkadot/util" "^13.0.2"
+    "@polkadot/util-crypto" "^13.0.2"
+    comlink "^4.4.1"
+    eventemitter3 "^5.0.1"
+    lodash "^4.17.21"
+    lru-cache "^10.2.0"
+    pino "^8.19.0"
+    pino-pretty "^11.0.0"
+    rxjs "^7.8.1"
+    zod "^3.22.4"
+
+"@acala-network/chopsticks-core@^0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-0.13.2.tgz#d45958fd4d49c61cb32c40822631a3a778c0b1f8"
   integrity sha512-MeqX2EqTKGmdkf8wjcz1+fJRohmdF+OWalihoszU7IEbGfjRz2cXQGZ9p25Mt90L9ZKR7O8P8EuZet6r9M8vaQ==
@@ -61,12 +82,12 @@
     rxjs "^7.8.1"
     zod "^3.22.4"
 
-"@acala-network/chopsticks-db@^0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-0.13.2.tgz#d860cb29e841263d98c3eeb9a2bdfbf73b4f19c6"
-  integrity sha512-STXqTejIgVO/PU+xW0oiunNoyKGc+G4ZVe9x6lcuNsdz5H1wH6ROEN6RxJKYDHNgxIUg5XOgMjyFsBHRlQMDsw==
+"@acala-network/chopsticks-db@^0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-0.13.3.tgz#0921b538080acc69291f54b229c3f0296cb5b952"
+  integrity sha512-km4GDSQvqO5tDvVkFe+QbIR6R92Bpw10965sLrI2askcV1FM/jswQyVGBgQKPEPPxs/3oUuoK5W4wVYDH+/4WA==
   dependencies:
-    "@acala-network/chopsticks-core" "0.13.2"
+    "@acala-network/chopsticks-core" "0.13.3"
     "@polkadot/util" "^13.0.2"
     idb "^8.0.0"
     sqlite3 "^5.1.7"
@@ -76,6 +97,14 @@
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-0.13.2.tgz#6bcfd7ecb22564edb56328deec9fc51998dd61b4"
   integrity sha512-dbJIYBkp+GU1+AcOeiYM4ejOb26wvNT7dGVwi0nzTPxprndREeVs+EZ3S1OSIrDEZgnsNO+BiBEzQFd0wHyP9w==
+  dependencies:
+    "@polkadot/util" "^13.0.2"
+    "@polkadot/wasm-util" "^7.3.2"
+
+"@acala-network/chopsticks-executor@0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-0.13.3.tgz#e1da7e498a54b0561fd4cef06d2c4f5383a48d38"
+  integrity sha512-QmzTqw5iRm7TOuso3ljGGWbBN3ZyCuLFhTqOh4e28VrMjvOy/+RBbq6I72bHcjhWwzOlhegEPMhJWVX/Fl3Uqg==
   dependencies:
     "@polkadot/util" "^13.0.2"
     "@polkadot/wasm-util" "^7.3.2"
