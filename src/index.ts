@@ -208,6 +208,9 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
               )
                
               const allFromEvents = await fromApi.query.system.events(status.createdAtHash)
+
+              await new Promise(resolve => setTimeout(resolve, 10000));
+
               const allToEvents = await toApi.query.system.events()
 
               const fromResult: ChopsticksEventsOutput = {
