@@ -97,14 +97,14 @@ app.post("/get-extrinsic-events", async (req, res) => {
             try {
               const blockHash = status.asInBlock // Get the block hash
               const signedBlock = await api.rpc.chain.getBlock(blockHash) // Get the block details
-             
+
               const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
 
               // Find the extrinsic index in the block
               const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
                 ext => ext.hash.toHex() === extrinsicHash
               )
-               
+
               const allEvents = await api.query.system.events(status.createdAtHash)
 
               const result: ChopsticksEventsOutput = {
@@ -139,7 +139,7 @@ app.post("/get-extrinsic-events", async (req, res) => {
   }
   console.log("Disconecting!")
 
-  res.status(404)  
+  res.status(404)
 })
 
 // XCM Chopsticks API
@@ -157,7 +157,7 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
     mockSignatureHost: true,
     db: new SqliteDatabase("cache"),
   })
-  
+
   const toChain = await setup({
     endpoint: input.toEndpoint,
     block: null,
@@ -165,8 +165,8 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
     db: new SqliteDatabase("cache"),
   })
 
-  const fromId = input.fromId 
-  const toId = input.toId 
+  const fromId = input.fromId
+  const toId = input.toId
   await connectParachains([
     fromChain,
     toChain,
@@ -192,69 +192,57 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
       },
     })
 
-    await new Promise<void>(async (resolve) => {
+    const to = new Promise<ChopsticksEventsOutput>(async (resolveTo) => {
+      const unsubscribe = await toApi.rpc.chain.subscribeNewHeads(async (lastHeader) => {
+        console.log(`New block header: #${lastHeader.number} has been added with hash ${lastHeader.hash}`);
+        const allToEvents = await toApi.query.system.events()
+
+        resolveTo({ events: allToEvents.toHex(), extrinsicIndex: 0 })
+      });
+    })
+
+    const from = new Promise<ChopsticksEventsOutput>(async (resolveFrom) => {
       try {
         await fromApi.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
           if (status.isInBlock) {
-            try {
-              const blockHash = status.asInBlock // Get the block hash
-              const signedBlock = await fromApi.rpc.chain.getBlock(blockHash) // Get the block details
-             
-              const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
+            const blockHash = status.asInBlock // Get the block hash
+            const signedBlock = await fromApi.rpc.chain.getBlock(blockHash) // Get the block details
 
-              // Find the extrinsic index in the block
-              const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
-                ext => ext.hash.toHex() === extrinsicHash
-              )
-               
-              const allFromEvents = await fromApi.query.system.events(status.createdAtHash)
-              const allToEvents = await toApi.query.system.events()
+            const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
 
-              const fromResult: ChopsticksEventsOutput = {
-                events: allFromEvents.toHex(),
-                extrinsicIndex
-              }
+            // Find the extrinsic index in the block
+            const fromExtrinsicIndex = signedBlock.block.extrinsics.findIndex(
+              ext => ext.hash.toHex() === extrinsicHash
+            )
 
-              const toResult: ChopsticksEventsOutput = {
-                events: allToEvents.toHex(),
-                extrinsicIndex: 0
-              }
+            const allFromEvents = await fromApi.query.system.events()
 
-              const result: XcmChopsticksEventsOutput = {
-                fromEvents: fromResult,
-                toEvents: toResult
-              }
-
-              console.log(result.fromEvents.events.length)
-              console.log(result.toEvents.events.length)
-
-              res.send(result)
-            }
-            catch {
-
-            }
-            resolve()
+            resolveFrom({ events: allFromEvents.toHex(), extrinsicIndex: fromExtrinsicIndex })
           }
           if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped || status.isNone || status.isEmpty) {
             res.status(404)
-
-            resolve()
           }
         })
       }
       catch (e) {
         res.status(404)
       }
+    });
 
-      resolve()
-    })
+    const [fromOutput, toOutput] = await Promise.all([from, to]);
 
+    const result: XcmChopsticksEventsOutput = {
+      fromEvents: fromOutput,
+      toEvents: toOutput
+    }
+
+    res.send(result)
   } catch (e) {
     res.status(404)
   }
   console.log("Disconecting!")
 
-  res.status(404)  
+  res.status(404)
 })
 
 
