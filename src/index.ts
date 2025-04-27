@@ -121,25 +121,29 @@ app.post("/get-extrinsic-events", async (req, res) => {
             resolve()
           }
           if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped || status.isNone || status.isEmpty) {
-            res.status(404)
+            res.status(400).send({
+              error: "Extrinsic processing failed",
+            });
 
             resolve()
           }
         })
       }
       catch (e) {
-        res.status(404)
+        res.status(400).send({
+          error: "Extrinsic processing failed",
+        });
       }
 
       resolve()
     })
 
   } catch (e) {
-    res.status(404)
+    res.status(400)
   }
   console.log("Disconecting!")
 
-  res.status(404)  
+  res.status(400)  
 })
 
 // XCM Chopsticks API
@@ -234,30 +238,40 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
               res.send(result)
             }
             catch {
-
+              res.status(400).send({
+                error: "Extrinsic processing failed",
+              });
             }
             resolve()
           }
           if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped || status.isNone || status.isEmpty) {
-            res.status(404)
+            res.status(400).send({
+              error: "Extrinsic processing failed",
+            });
 
             resolve()
           }
         })
       }
       catch (e) {
-        res.status(404)
+        res.status(400).send({
+          error: "Extrinsic processing failed",
+        });
       }
 
       resolve()
     })
 
   } catch (e) {
-    res.status(404)
+    res.status(400).send({
+      error: "Extrinsic processing failed"
+    });
   }
   console.log("Disconecting!")
 
-  res.status(404)  
+  res.status(400).send({
+    error: "Extrinsic processing failed",
+  });
 })
 
 
@@ -286,7 +300,7 @@ app.post("/dry-run-extrinsic", async (req, res) => {
     res.send(dryRunResult)
     console.log("dry-run-extrinsic Done! Resulted in: ", dryRunResult)
   } catch (e) {
-    res.status(404)
+    res.status(400)
   }
 })
 
