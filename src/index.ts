@@ -244,7 +244,11 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
             }
             resolve()
           }
-          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped || status.isNone || status.isEmpty) {
+          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped) {
+            console.log("status: ");
+
+            console.log(status);
+            
             res.status(400).send({
               error: "Extrinsic processing failed",
             });
