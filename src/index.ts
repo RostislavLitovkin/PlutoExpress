@@ -25,7 +25,9 @@ const connect = async () => {
     return
   }
   // Initialize Polkadot API
-  const wsProvider = new WsProvider("wss://rpc.hydradx.cloud")
+  const wsProvider = new WsProvider("wss://rpc.hydradx.cloud", undefined, undefined, 
+    // Increase max response size to 32MB
+    32 * 1024 * 1024)
   const api = await ApiPromise.create({ provider: wsProvider })
 
   // Initialize Trade Router
