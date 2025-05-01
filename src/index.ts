@@ -1,4 +1,5 @@
 import express from "express"
+import "reflect-metadata";
 import { WsProvider, ApiPromise } from "@polkadot/api"
 import { TradeRouter, PoolService } from "@galacticcouncil/sdk"
 import { HydrationSwapInput } from "./HydrationSwapInput"
