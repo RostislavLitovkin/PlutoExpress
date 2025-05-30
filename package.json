@@ -7,7 +7,7 @@
     "start": "tsc && node dist/index.js"
   },
   "dependencies": {
-    "@acala-network/chopsticks-core": "^0.13.2",
+    "@acala-network/chopsticks-core": "^1.0.5",
     "@acala-network/chopsticks-db": "^0.13.3",
     "@galacticcouncil/sdk": "^4.0.2",
     "@paraspell/xcm-router": "^1.2.1",
