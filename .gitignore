@@ -4,3 +4,5 @@ dist
 cache
 cache-shm
 cache-wal
+
+.env

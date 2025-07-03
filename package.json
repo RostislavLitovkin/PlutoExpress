@@ -12,6 +12,7 @@
     "@galacticcouncil/sdk": "^4.0.2",
     "@paraspell/xcm-router": "^1.2.1",
     "@polkadot/api": "^12.2.1",
+    "dotenv": "^17.0.1",
     "express": "^4.19.2",
     "reflect-metadata": "^0.2.2"
   },
