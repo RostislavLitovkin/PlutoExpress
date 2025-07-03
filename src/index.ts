@@ -1,6 +1,6 @@
 import express from "express"
 import "reflect-metadata";
-import { WsProvider, ApiPromise } from "@polkadot/api"
+import { WsProvider, ApiPromise, Keyring } from "@polkadot/api"
 import { TradeRouter, PoolService } from "@galacticcouncil/sdk"
 import { HydrationSwapInput } from "./HydrationSwapInput"
 import { ChopsticksProvider, connectParachains, setStorage, setup } from "@acala-network/chopsticks-core"
@@ -14,6 +14,12 @@ import { hexToU8a } from "@polkadot/util"
 import { disconnect } from "process"
 import { error } from "console"
 import { createApi } from "./helpers/fatchEvents"
+import { FaucetInput } from "./FaucetInput"
+import * as dotenv from 'dotenv'
+
+
+// Load env vars from .env into process.env
+dotenv.config()
 
 const app = express()
 // Middleware to parse JSON bodies
@@ -311,6 +317,65 @@ app.post("/dry-run-extrinsic", async (req, res) => {
   } catch (e) {
     res.status(400)
   }
+})
+
+// Faucet Address
+app.get("/faucet-address", async (req, res) => {
+  const phrase = process.env.RICHMAN_PHRASE;
+  if (!phrase) {
+    res.status(501).send("No phrase found")
+    return
+  }
+
+  const keyring = new Keyring({ type: 'sr25519' })
+  const richMan = keyring.addFromUri(phrase)
+
+  res.send(richMan.address)
+})
+
+// Faucet API
+app.post("/faucet", async (req, res) => {
+  console.log("request-body: ", req.body)
+
+  try {
+    const phrase = process.env.RICHMAN_PHRASE;
+    if (!phrase) {
+      res.status(501).send("No phrase found")
+      return
+    }
+
+    const input = req.body as FaucetInput
+    if (!input.destinationAddress || !input.websocketUrl) {
+      res.status(400).send("Wrong parameters specified")
+      return
+    }
+
+    // Create rich account
+    const keyring = new Keyring({ type: 'sr25519' })
+    const richMan = keyring.addFromUri(phrase)
+
+    // Costruct API
+    const wsProvider = new WsProvider(req.body.websocketUrl)
+    const api = await ApiPromise.create({ provider: wsProvider })
+
+    // Send crypto
+    await api.tx.utility.batch([
+      // native token
+      api.tx.balances.transferKeepAlive(req.body.destinationAddress, 1000*1_000_000_000_000),
+      // USDT
+      api.tx.assets.transferKeepAlive(1984, req.body.destinationAddress, 1000*1_000_000),
+      // USDC
+      api.tx.assets.transferKeepAlive(1337, req.body.destinationAddress, 1000*1_000_000)
+    ]).signAndSend(richMan)
+
+    console.log("Faucet API: sent")
+  } catch (e) {
+    console.log(e)
+    res.status(400).send("")
+    return
+  }
+
+  res.status(200).send("")
 })
 
 
