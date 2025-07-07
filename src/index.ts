@@ -361,11 +361,11 @@ app.post("/faucet", async (req, res) => {
     // Send crypto
     await api.tx.utility.batch([
       // native token
-      api.tx.balances.transferKeepAlive(req.body.destinationAddress, 1000*1_000_000_000_000),
+      api.tx.balances.transferKeepAlive(req.body.destinationAddress, 100*1_000_000_000_000),
       // USDT
-      api.tx.assets.transferKeepAlive(1984, req.body.destinationAddress, 1000*1_000_000),
+      api.tx.assets.transferKeepAlive(1984, req.body.destinationAddress, 10000*1_000_000),
       // USDC
-      api.tx.assets.transferKeepAlive(1337, req.body.destinationAddress, 1000*1_000_000)
+      api.tx.assets.transferKeepAlive(1337, req.body.destinationAddress, 10000*1_000_000)
     ]).signAndSend(richMan)
 
     console.log("Faucet API: sent")
