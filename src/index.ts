@@ -26,7 +26,7 @@ const app = express()
 app.use(express.json())
 const port = 8000
 
-let tradeRouter: TradeRouter
+/*let tradeRouter: TradeRouter
 const connect = async () => {
   if (tradeRouter != null) {
     return
@@ -60,7 +60,7 @@ app.post("/dot-price", async (req, res) => {
   // Do something
   const result = await tradeRouter.getBestSpotPrice(input.tokenIn, input.tokenOut)
   res.send(result)
-})
+})*/
 
 // Chopstics API
 app.post("/get-extrinsic-events", async (req, res) => {
