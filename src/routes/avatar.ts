@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import crypto from "crypto";
+import sharp from "sharp";
 
 const router = Router();
 
@@ -197,8 +198,6 @@ function escapeXml(s: string) {
     .replace(/>/g, "&gt;");
 }
 
-// --- Express route ---
-// GET /avatars/:pubkey.svg
 router.get("/avatars/:pubkey.svg", (req: Request, res: Response) => {
   const { pubkey } = req.params;
 
@@ -208,21 +207,49 @@ router.get("/avatars/:pubkey.svg", (req: Request, res: Response) => {
       .json({ error: "Invalid Base58 public key (SS58-style expected)." });
   }
 
-  // Deterministic SVG
   const svg = svgForKey(pubkey, 256);
 
-  // Caching: strong etag; cache for a year since deterministic
   const etag = crypto.createHash("sha1").update(svg).digest("hex");
   res.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
   res.setHeader("ETag", etag);
   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
 
-  // Conditional GET
   if (req.headers["if-none-match"] === etag) {
     return res.status(304).end();
   }
 
   return res.status(200).send(svg);
+});
+
+router.get("/avatars/:pubkey.png", async (req: Request, res: Response) => {
+  const { pubkey } = req.params;
+  if (!pubkey || !BASE58_RE.test(pubkey)) {
+    return res
+      .status(400)
+      .json({ error: "Invalid Base58 public key (SS58-style expected)." });
+  }
+
+  const svg = svgForKey(pubkey, 256);
+  const etag = crypto.createHash("sha1").update(svg).digest("hex");
+
+  res.setHeader("Content-Type", "image/png");
+  res.setHeader("ETag", etag);
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+
+  if (req.headers["if-none-match"] === etag) {
+    return res.status(304).end();
+  }
+
+  try {
+    const pngBuffer = await sharp(Buffer.from(svg))
+      .png()
+      .toBuffer();
+
+    return res.status(200).send(pngBuffer);
+  } catch (err) {
+    console.error("PNG render failed:", err);
+    return res.status(500).json({ error: "Failed to render PNG" });
+  }
 });
 
 export default router;
