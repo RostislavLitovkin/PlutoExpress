@@ -52,7 +52,8 @@ function normalizeEndpoint(raw: string): string {
 
 function formatBalance(api: ApiPromise, value: unknown): string {
   try {
-    return api.createType("Balance", value).toHuman()
+    const human = api.createType("Balance", value).toHuman()
+    return human != null ? String(human) : "0"
   } catch (err) {
     try {
       return String(value)
@@ -73,7 +74,8 @@ function normalizeSymbol(symbol?: string) {
 
 function formatAmount(api: ApiPromise, value: unknown, decimals: number | undefined, symbol?: string) {
   try {
-    const bn = api.createType("Balance", value).toBigInt()
+    const balance = api.createType("Balance", value)
+    const bn = BigInt(balance.toString())
     const d = Math.max(0, decimals ?? 0)
     if (d === 0) return `${bn.toString()} ${symbol ?? ""}`.trim()
 
@@ -119,7 +121,7 @@ async function fetchBalances(endpoint: string, faucetAddress: string) {
     const chainTokenRaw = api.registry.chainTokens?.[0] ?? "Native"
     const chainToken = normalizeSymbol(chainTokenRaw) ?? chainTokenRaw
     const chainDecimals = api.registry.chainDecimals?.[0] ?? 12
-    const account = await api.query.system.account(faucetAddress)
+    const account = (await api.query.system.account(faucetAddress)) as any
 
     const balances: BalanceLine[] = [
       {
@@ -135,9 +137,9 @@ async function fetchBalances(endpoint: string, faucetAddress: string) {
           const meta = await readAssetMetadata(api, assetId)
           const symbol = normalizeSymbol(meta?.symbol) ?? meta?.symbol
           const label = symbol ? `${symbol} (Asset ${assetId})` : `Asset ${assetId}`
-          const assetAccount = await api.query.assets.account(assetId, faucetAddress)
-          if (assetAccount && "isSome" in assetAccount) {
-            const data = assetAccount.unwrapOrDefault() as unknown as { balance?: unknown }
+          const assetAccount = (await api.query.assets.account(assetId, faucetAddress)) as any
+          if (assetAccount && (assetAccount as any).unwrapOrDefault) {
+            const data = assetAccount.unwrapOrDefault() as { balance?: unknown }
             balances.push({
               label,
               value: formatAmount(api, data.balance ?? 0, meta?.decimals ?? 12, symbol ?? `Asset ${assetId}`),
