@@ -17,6 +17,7 @@ import { createApi } from "./helpers/fatchEvents"
 import { FaucetInput } from "./FaucetInput"
 import * as dotenv from 'dotenv'
 import avatarRouter from "./routes/avatar";
+import faucetPageRouter from "./routes/faucetPage";
 
 
 // Load env vars from .env into process.env
@@ -26,6 +27,7 @@ const app = express()
 // Middleware to parse JSON bodies
 app.use(express.json())
 app.use("/", avatarRouter);
+app.use("/", faucetPageRouter);
 const port = 8000
 
 /*let tradeRouter: TradeRouter
