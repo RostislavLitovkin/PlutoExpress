@@ -82,9 +82,12 @@ app.post("/get-extrinsic-events", async (req, res) => {
     db: new SqliteDatabase("cache"),
   })
 
+  let api: ApiPromise | undefined
+  let unsub: (() => void) | undefined
+
   try {
     const provider = new ChopsticksProvider(chain)
-    const api = new ApiPromise({ provider, noInitWarn: true })
+    api = new ApiPromise({ provider, noInitWarn: true })
     await api.isReadyOrError
 
     await setStorage(chain, {
@@ -103,64 +106,59 @@ app.post("/get-extrinsic-events", async (req, res) => {
       },
     })
 
-    await new Promise<void>(async (resolve) => {
-      try {
-        await api.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
-          if (status.isInBlock) {
-            try {
-              const blockHash = status.asInBlock // Get the block hash
-              const signedBlock = await api.rpc.chain.getBlock(blockHash) // Get the block details
-             
-              const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
+    const result = await new Promise<ChopsticksEventsOutput>((resolve, reject) => {
+      // We must unsubscribe after receiving a response to avoid piling up active subscriptions.
+      api!.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
+        if (status.isInBlock) {
+          try {
+            const blockHash = status.asInBlock
+            const signedBlock = await api!.rpc.chain.getBlock(blockHash)
 
-              // Find the extrinsic index in the block
-              const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
-                ext => ext.hash.toHex() === extrinsicHash
-              )
-               
-              const allEvents = await api.query.system.events(status.createdAtHash)
+            const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
+            const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
+              (ext) => ext.hash.toHex() === extrinsicHash,
+            )
 
-              const result: ChopsticksEventsOutput = {
-                events: allEvents.toHex(),
-                extrinsicIndex
-              }
+            const allEvents = await api!.query.system.events(status.createdAtHash)
 
-              console.log(result)
-              res.send(result)
-            }
-            catch {
-              res.status(400).send({
-                error: "Extrinsic processing failed",
-              });
-            }
-            resolve()
+            resolve({
+              events: allEvents.toHex(),
+              extrinsicIndex,
+            })
+          } catch (err) {
+            reject(err)
           }
-          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped) {
-            console.log("status: ");
+          return
+        }
 
-            res.status(400).send({
-              error: "Extrinsic processing failed",
-            });
-
-            resolve()
-          }
+        if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped) {
+          reject(new Error("Extrinsic processing failed"))
+        }
+      })
+        .then((u) => {
+          unsub = u
         })
-      }
-      catch (e) {
-        res.status(400).send({
-          error: "Extrinsic processing failed",
-        });
-      }
-
-      resolve()
+        .catch((err) => reject(err))
     })
 
+    console.log(result)
+    res.send(result)
   } catch (e) {
-    res.status(400)
+    res.status(400).send({
+      error: "Extrinsic processing failed",
+    })
+  } finally {
+    try {
+      if (unsub) {
+        unsub()
+      }
+      if (api) {
+        await api.disconnect()
+      }
+    } catch (cleanupError) {
+      console.warn("Cleanup failed", cleanupError)
+    }
   }
-  console.log("Disconecting!")
-
-  res.status(400)  
 })
 
 // XCM Chopsticks API
@@ -193,9 +191,13 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
     toChain,
   ])
 
+  let fromApi: ApiPromise | undefined
+  let toApi: ApiPromise | undefined
+  let unsub: (() => void) | undefined
+
   try {
-    const fromApi = await createApi(fromChain)
-    const toApi = await createApi(toChain)
+    fromApi = await createApi(fromChain)
+    toApi = await createApi(toChain)
 
     await setStorage(fromChain, {
       System: {
@@ -213,84 +215,77 @@ app.post("/get-xcm-extrinsic-events", async (req, res) => {
       },
     })
 
-    await new Promise<void>(async (resolve) => {
-      try {
-        await fromApi.rpc.author.submitAndWatchExtrinsic(input.extrinsic, async (status) => {
+    const result = await new Promise<XcmChopsticksEventsOutput>((resolve, reject) => {
+      // Avoid leaking subscriptions by capturing the unsubscribe handle.
+      fromApi!.rpc.author
+        .submitAndWatchExtrinsic(input.extrinsic, async (status) => {
           if (status.isInBlock) {
             try {
-              const blockHash = status.asInBlock // Get the block hash
-              const signedBlock = await fromApi.rpc.chain.getBlock(blockHash) // Get the block details
-             
+              const blockHash = status.asInBlock
+              const signedBlock = await fromApi!.rpc.chain.getBlock(blockHash)
+
               const extrinsicHash = blake2AsHex(hexToU8a(input.extrinsic))
-
-              // Find the extrinsic index in the block
               const extrinsicIndex = signedBlock.block.extrinsics.findIndex(
-                ext => ext.hash.toHex() === extrinsicHash
+                (ext) => ext.hash.toHex() === extrinsicHash,
               )
-               
-              const allFromEvents = await fromApi.query.system.events(status.createdAtHash)
 
-              await new Promise(resolve => setTimeout(resolve, 10000));
+              const allFromEvents = await fromApi!.query.system.events(status.createdAtHash)
 
-              const allToEvents = await toApi.query.system.events()
+              // wait for the destination chain to process
+              await new Promise((r) => setTimeout(r, 10000))
 
-              const fromResult: ChopsticksEventsOutput = {
-                events: allFromEvents.toHex(),
-                extrinsicIndex
-              }
+              const allToEvents = await toApi!.query.system.events()
 
-              const toResult: ChopsticksEventsOutput = {
-                events: allToEvents.toHex(),
-                extrinsicIndex: 0
-              }
-
-              const result: XcmChopsticksEventsOutput = {
-                fromEvents: fromResult,
-                toEvents: toResult
-              }
-
-              console.log(result.fromEvents.events.length)
-              console.log(result.toEvents.events.length)
-
-              res.send(result)
+              resolve({
+                fromEvents: {
+                  events: allFromEvents.toHex(),
+                  extrinsicIndex,
+                },
+                toEvents: {
+                  events: allToEvents.toHex(),
+                  extrinsicIndex: 0,
+                },
+              })
+            } catch (err) {
+              reject(err)
             }
-            catch {
-              res.status(400).send({
-                error: "Extrinsic processing failed",
-              });
-            }
-            resolve()
+            return
           }
-          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped) {
-            console.log("status: ");
-            
-            res.status(400).send({
-              error: "Extrinsic processing failed",
-            });
 
-            resolve()
+          if (status.isInvalid || status.isRetracted || status.isUsurped || status.isDropped) {
+            reject(new Error("Extrinsic processing failed"))
           }
         })
-      }
-      catch (e) {
-        res.status(400).send({
-          error: "Extrinsic processing failed",
-        });
-      }
-
-      resolve()
+        .then((u) => {
+          unsub = u
+        })
+        .catch((err) => reject(err))
     })
+
+    console.log(result.fromEvents.events.length)
+    console.log(result.toEvents.events.length)
+
+    res.send(result)
 
   } catch (e) {
     res.status(400).send({
       error: "Extrinsic processing failed"
     });
+  } finally {
+    try {
+      if (unsub) {
+        unsub()
+      }
+      if (fromApi) {
+        await fromApi.disconnect()
+      }
+      if (toApi) {
+        await toApi.disconnect()
+      }
+    } catch (cleanupError) {
+      console.warn("Cleanup failed", cleanupError)
+    }
   }
-  console.log("Disconecting!")
-
-  res.status(400).send({
-    error: "Extrinsic processing failed",
-  });
 })
 
 
