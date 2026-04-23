@@ -25,12 +25,12 @@
     "@babel/runtime" "^7.10.2"
     bignumber.js "^9.0.0"
 
-"@acala-network/chopsticks-core@1.3.0", "@acala-network/chopsticks-core@^1.2.1":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.3.0.tgz#685ec76b7807d452fbc0a2da9ff992192cbd474c"
-  integrity sha512-MTJHdJ3z9/GLSxjrL9P8WsG+w1K/WNh6WaVWVdtYYhhf7InDsOU2ti2cfDqEg1i82YvVSPj8CBZPS/98T544QA==
+"@acala-network/chopsticks-core@1.3.1", "@acala-network/chopsticks-core@^1.2.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.3.1.tgz#607636e6a1c67837e33b1f0e382ee28da2d4e7c9"
+  integrity sha512-gXoCeVsBRhJkVPp48IDvZTDiJ59l6rLFdg3qUd8crUnBwdUpWhRFmplBevqI+hYwgWnwxHof/959SKU/tAGOuA==
   dependencies:
-    "@acala-network/chopsticks-executor" "1.3.0"
+    "@acala-network/chopsticks-executor" "1.3.1"
     "@polkadot/rpc-provider" "^16.4.1"
     "@polkadot/types" "^16.4.1"
     "@polkadot/types-codec" "^16.4.1"
@@ -39,7 +39,7 @@
     "@polkadot/util-crypto" "^14.0.1"
     comlink "^4.4.2"
     eventemitter3 "^5.0.1"
-    lodash "^4.17.21"
+    lodash "^4.18.1"
     lru-cache "^11.1.0"
     pino "^9.7.0"
     pino-pretty "^13.0.0"
@@ -47,21 +47,21 @@
     zod "^3.25.76"
 
 "@acala-network/chopsticks-db@^1.2.1":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.3.0.tgz#c3c0c83d15bda75dfd940a93b19a7bddaaf585f5"
-  integrity sha512-AWlHb58d20h3ZWyA8HlmVH5WCNFWGbwbSDzPGOXI2vfORY9NJIpbMSumjVy2o6gdoJrvS7W/Y6ultQ6drNMSMA==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.3.1.tgz#842e04116e3068ef1099ccea6b6d97e373ab080d"
+  integrity sha512-KSh5ulKBg8nGgJe+BwlPPqlfPxq+w9mKAbY88PU3qnWv9l2O5q+Za9MRLxcV0rwsywTqQdjRKbMqMwxKj1+oEQ==
   dependencies:
-    "@acala-network/chopsticks-core" "1.3.0"
+    "@acala-network/chopsticks-core" "1.3.1"
     "@polkadot/util" "^14.0.1"
     idb "^8.0.3"
     reflect-metadata "^0.2.2"
     sqlite3 "^5.1.7"
     typeorm "^0.3.26"
 
-"@acala-network/chopsticks-executor@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.3.0.tgz#a51839aa47cccc8ce08d3cfe70a4c3e9c8658ecb"
-  integrity sha512-Inq1K6ouYXzFHLLBCZh2fRcD1tvfY7ccUpQiH8ICuhE5UERl/Le5YHP3NDbVdi9y39Y0eTTRBSdW71TqnHigJg==
+"@acala-network/chopsticks-executor@1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.3.1.tgz#1e844f62e406a7bd53ef2426e55513cd03f710a1"
+  integrity sha512-zqt41Sp6va7Iv69X++oCPFFGoGPfpBsmfeHpi18E2UaRmZIui3FHsTTCG7EXhrj8krk/sutS+xnVMK8U8d7zjw==
   dependencies:
     "@polkadot/util" "^14.0.1"
     "@polkadot/wasm-util" "^7.4.1"
@@ -5774,7 +5774,7 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==
 
-lodash@^4.17.20, lodash@^4.17.21:
+lodash@^4.17.20, lodash@^4.18.1:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.18.1.tgz#ff2b66c1f6326d59513de2407bf881439812771c"
   integrity sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==
@@ -6234,9 +6234,9 @@ onetime@^7.0.0:
     mimic-function "^5.0.0"
 
 ora@^9.1.0:
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/ora/-/ora-9.3.0.tgz#187c87cc1062350f549f481de32bf91424c2b0e3"
-  integrity sha512-lBX72MWFduWEf7v7uWf5DHp9Jn5BI8bNPGuFgtXMmr2uDz2Gz2749y3am3agSDdkhHPHYmmxEGSKH85ZLGzgXw==
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/ora/-/ora-9.4.0.tgz#0c9bc0128254928be6b65e109d11ba7222620eff"
+  integrity sha512-84cglkRILFxdtA8hAvLNdMrtBpPNBTrQ9/ulg0FA7xLMnD6mifv+enAIeRmvtv+WgdCE+LPGOfQmtJRrVaIVhQ==
   dependencies:
     chalk "^5.6.2"
     cli-cursor "^5.0.0"
@@ -6244,7 +6244,7 @@ ora@^9.1.0:
     is-interactive "^2.0.0"
     is-unicode-supported "^2.1.0"
     log-symbols "^7.0.1"
-    stdin-discarder "^0.3.1"
+    stdin-discarder "^0.3.2"
     string-width "^8.1.0"
 
 ox@0.14.20:
@@ -7085,7 +7085,7 @@ statuses@^2.0.1, statuses@^2.0.2, statuses@~2.0.2:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-2.0.2.tgz#8f75eecef765b5e1cfcdc080da59409ed424e382"
   integrity sha512-DvEy55V3DB7uknRo+4iOGT5fP1slR8wQohVdknigZPMpMstaKJQWhwiYBACJE3Ul2pTnATihhBYnRhZQHGBiRw==
 
-stdin-discarder@^0.3.1:
+stdin-discarder@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/stdin-discarder/-/stdin-discarder-0.3.2.tgz#998ab3b9a988661e6036a9bfdc96f43649e8e83e"
   integrity sha512-eCPu1qRxPVkl5605OTWF8Wz40b4Mf45NY5LQmVPQ599knfs5QhASUm9GbJ5BDMDOXgrnh0wyEdvzmL//YMlw0A==
