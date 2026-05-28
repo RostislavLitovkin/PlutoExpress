@@ -3809,9 +3809,9 @@
   integrity sha512-TWDurLiPxndFgKjVavCniytBIw+t4ViOi7TYp9h/D0NMmkEc9klFTo+827eyEJ0lELpqO207Ey7uGxUa+BS1jQ==
 
 "@swc/helpers@^0.5.0":
-  version "0.5.22"
-  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.22.tgz#914130a189205cef611b75948c93b95adf6cf11b"
-  integrity sha512-/e2Ly3Docn9kYByap6TV4oquJ3wQuz3c+kC74riqtkwU9CwTMeuj6t2rW+bRr4pyOx/CYQM4wr0RgaKQwGEz0A==
+  version "0.5.23"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.23.tgz#19287d0d86d962b111376039a50c792902c9a86a"
+  integrity sha512-5lSsMOTXURePglDfvuAQUqkGek9Hg2kksOYay2m0+XR++b2NWYL/4sWyuvVBIs8oKnJaxkdi9whaL/sqN13afw==
   dependencies:
     tslib "^2.8.0"
 
@@ -5601,9 +5601,9 @@ lru-cache@^10.0.1, lru-cache@^10.2.0:
   integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
 
 lru-cache@^11.1.0:
-  version "11.5.0"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.5.0.tgz#14117229fd25bc9c67936e32de90ca047488c97a"
-  integrity sha512-5YgH9UJd7wVb9hIouI2adWpgqrrICkt070Dnj8EUY1+B4B2P9eRLPAkAAo6NICA7CEhOIeBHl46u9zSNpNu7zA==
+  version "11.5.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-11.5.1.tgz#f3daa3540847b9737ebc02499ddb36765e54db4a"
+  integrity sha512-RPimw/7aMdv2oqRrxKwvZXcPfwBrn/JZ2xYcY9Hus/6LaS3VOAKVWKWgNLCFSiOm1ESXinjsDlidVU7JlnCN2A==
 
 lru-cache@^7.14.1:
   version "7.18.3"
@@ -7168,9 +7168,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.51.2"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.51.2.tgz#31dfdb8e7cb4b374450a5bb3379328e424e6f069"
-  integrity sha512-2x4YAtr3PUPIW++Ov96clnWtRsyqMfpFfooQRIxCpAMsTgxioJTdIQ0ywbjhlHDCUJEGM6M8q8ILOeaPRViH9w==
+  version "2.51.3"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.51.3.tgz#85df6bd9a9456158be89ffbabe28ac0edaed67aa"
+  integrity sha512-DA4EbrsvatzzLo6MwcWWiv6kI6dIr3I9HH9B6qsJaClN/s0AjIDUz5RIxl+VmGrovIUCcIvG8744yuGH7d37zw==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
