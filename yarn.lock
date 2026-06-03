@@ -25,12 +25,12 @@
     "@babel/runtime" "^7.10.2"
     bignumber.js "^9.0.0"
 
-"@acala-network/chopsticks-core@1.4.1", "@acala-network/chopsticks-core@^1.2.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.4.1.tgz#98bfd56112d3967f8e140796b94c0e4619c0dba5"
-  integrity sha512-Yz6vA+NJwWMGERPjKCVs9gfB/E4ciGHMr0Njv1z4w1AcOpqf+c9yDkbHyP8jb6YH4uklXknUXHjHc3f3bYuLdg==
+"@acala-network/chopsticks-core@1.4.2", "@acala-network/chopsticks-core@^1.2.1":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.4.2.tgz#6383f7e770487a1c969f5de31e66e0d3a04fe719"
+  integrity sha512-pFqTC21htLrv8xrmE5ue+PiNnyJOSAk4IWXdQjjT0FkM32lyfK7LrWvvjVDGRQZ/sAdrN7acZTDOJExidSXQQA==
   dependencies:
-    "@acala-network/chopsticks-executor" "1.4.1"
+    "@acala-network/chopsticks-executor" "1.4.2"
     "@polkadot/rpc-provider" "^16.4.1"
     "@polkadot/types" "^16.4.1"
     "@polkadot/types-codec" "^16.4.1"
@@ -47,21 +47,21 @@
     zod "^3.25.76"
 
 "@acala-network/chopsticks-db@^1.2.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.4.1.tgz#758549c68745d341c775963268d422d826067e8b"
-  integrity sha512-OG5vXwq/5glMTL4ngfgi6QNVMPlhGEK75O/0faf8/wdyfeohdX7e82JGdGV3ZNYdpBD9EPu2batr/zdSBqriVw==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.4.2.tgz#7c8a24ad35a579f47a29494cff788c9b8c0e342f"
+  integrity sha512-TpoLP0nfUjf0Fx/3iV42ixJ8FbDYEaJUx+VMgTkRD6BN63/nPToKkAkCUURpyXHPP+jjgBkNgI5kAw5SuhSUWw==
   dependencies:
-    "@acala-network/chopsticks-core" "1.4.1"
+    "@acala-network/chopsticks-core" "1.4.2"
     "@polkadot/util" "^14.0.1"
     idb "^8.0.3"
     reflect-metadata "^0.2.2"
     sqlite3 "^6.0.1"
     typeorm "^0.3.26"
 
-"@acala-network/chopsticks-executor@1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.4.1.tgz#898635e80717ce85af995db6c97622902ad1c920"
-  integrity sha512-gcXr7Agm4n6iazHtB7joqlPRfXcl5IWwFZ7vEOPJwzmV6r5QDd0MTC9pm2OHCVxMMcllZpRHpELgiULVnylCwA==
+"@acala-network/chopsticks-executor@1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.4.2.tgz#4c2a5cfc6409c14317b31588364f6b69271a2a5b"
+  integrity sha512-hG+hjK9x1pIxCWL9CG5dSvsbz7gEsR4/ayW+P4ldGw0uFckQhzp+Gak57FYuka/PjQx09l4blv1BWDS/Lxq9fg==
   dependencies:
     "@polkadot/util" "^14.0.1"
     "@polkadot/wasm-util" "^7.4.1"
@@ -3816,16 +3816,16 @@
     tslib "^2.8.0"
 
 "@tanstack/react-virtual@^3.8.1":
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.14.1.tgz#d6a46ddfd283c665e00ebfa6eaa43c0faaa11727"
-  integrity sha512-VJCw2DzKd16eMFoijSYpyAnwy0o8lzHTbYlGQOaSVHCWNptiZj4jlIsTE/LT7tzEHAMMRJC1ZIQA4OxAc99jLg==
+  version "3.14.2"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.14.2.tgz#ff1f97cd52f2bf4bda7f6d141bc9af80010daf45"
+  integrity sha512-IpWnmCLvuymRfeeLNVXIzNEYBFLpd3drVIS91sqV78VTZFyldlChkOocZRCPp1B+Wnk09bcLNme8WaMU/9/9bQ==
   dependencies:
-    "@tanstack/virtual-core" "3.16.1"
+    "@tanstack/virtual-core" "3.17.0"
 
-"@tanstack/virtual-core@3.16.1":
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.16.1.tgz#0300d072e8bae80f6a4c2e2187d17ae65fa24688"
-  integrity sha512-br4gmJ3eI2IXth0fAAVWNdi/Iqb5ZDIUG9409Q17qnXegeHHc9vPEeMsSwpGf29GqayfmqFPtv9S4rxcZOub3Q==
+"@tanstack/virtual-core@3.17.0":
+  version "3.17.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.17.0.tgz#2949d4aaeaf73f89bab10bf86e22905f5a668acc"
+  integrity sha512-gOxY/hFkPh/XQYhnThBHzkbkX3Ed+z/iushyz+R+JAr213aXxUDgQoTgTdrDpBSRsjFM73P/KfUyWmaF9WHMkQ==
 
 "@thi.ng/api@^8.12.25":
   version "8.12.25"
@@ -6860,9 +6860,9 @@ thenify-all@^1.0.0:
     any-promise "^1.0.0"
 
 thread-stream@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/thread-stream/-/thread-stream-3.1.0.tgz#4b2ef252a7c215064507d4ef70c05a5e2d34c4f1"
-  integrity sha512-OqyPZ9u96VohAyMfJykzmivOrY2wfMSf3C5TtFJVgN+Hm6aj+voFhlK+kZEIv2FBh1X6Xp3DlnCOfEQ3B2J86A==
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/thread-stream/-/thread-stream-3.2.0.tgz#3720b496d646c8077b57406d53ec5a5385e3938c"
+  integrity sha512-zLBvqpwr4Esa0kRjcrzGU6zL25lePWaCLMx0RQFrmteozIfeNdaMLpG5U7PeHzvlFkAWaRKA9/KVW4F60iB+qw==
   dependencies:
     real-require "^0.2.0"
 
