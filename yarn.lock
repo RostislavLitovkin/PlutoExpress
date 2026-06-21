@@ -5772,9 +5772,9 @@ mz@^2.7.0:
     thenify-all "^1.0.0"
 
 nanoid@^3.3.12:
-  version "3.3.13"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.13.tgz#d9666aa3eb9cebba69b0f8f9b84e509d46933deb"
-  integrity sha512-sPdqC6ByMVVGvF1ynvvMo0/o+oD1VX7DaHhijt1bFgjvBkHBib4t49GoNDhf2NDta4oeUNlaGbSt5K7qjZ955Q==
+  version "3.3.14"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.14.tgz#02d7e019f05dd8eeee2779c6f42206c06542ab33"
+  integrity sha512-U9kYi5bpVMEI31yC8iw4bJJp0avcHXA0W8/wNfLfnvJYzihQo2ZRPYPvpAAd570HAcCBjCTN7vnr+v4StKl1IQ==
 
 napi-build-utils@^2.0.0:
   version "2.0.0"
@@ -6811,9 +6811,9 @@ sucrase@^3.35.0:
     ts-interface-checker "^0.1.9"
 
 tabbable@^6.0.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.4.0.tgz#36eb7a06d80b3924a22095daf45740dea3bf5581"
-  integrity sha512-05PUHKSNE8ou2dwIxTngl4EzcnsCDZGJ/iCLtDflR/SHB/ny14rXc+qU5P4mG9JkusiV7EivzY9Mhm55AzAvCg==
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.5.0.tgz#a65101385a4fd6cbd580b7546da0170f307b535d"
+  integrity sha512-wieBHXygIm7OyQOu5hQlkk62/WyCFYGlWg7L6/ZCUZwx0o398Zkn4pVmMyfYhfMG8kGrj/Krt8eIk6UKC6VzwA==
 
 tagged-tag@^1.0.0:
   version "1.0.0"
@@ -7180,9 +7180,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.52.2"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.52.2.tgz#b5f2899463ddc1cc2039bd804311a67c2c4806e6"
-  integrity sha512-HSU12p5aD/kAPZfrlbCUqdiP4P/c6hQ9AhfTS51VbLUQIjkWd1d5EjrCx/SCxZ0zhZVRn4Iv5X5WDqXPG8Ubew==
+  version "2.53.1"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.53.1.tgz#8f8dff96b0c85317ce7ce54d282bd7b27798a695"
+  integrity sha512-FhfJ/SW73CVosiyVLmIMVgKDRKYV1AGCLzZoHYvmNayyVff63Qi1ocPCk59LqC/cNw244RbBJjHnmxqXkE7NpA==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
