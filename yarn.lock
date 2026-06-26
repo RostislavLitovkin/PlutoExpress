@@ -25,12 +25,12 @@
     "@babel/runtime" "^7.10.2"
     bignumber.js "^9.0.0"
 
-"@acala-network/chopsticks-core@1.4.2", "@acala-network/chopsticks-core@^1.2.1":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.4.2.tgz#6383f7e770487a1c969f5de31e66e0d3a04fe719"
-  integrity sha512-pFqTC21htLrv8xrmE5ue+PiNnyJOSAk4IWXdQjjT0FkM32lyfK7LrWvvjVDGRQZ/sAdrN7acZTDOJExidSXQQA==
+"@acala-network/chopsticks-core@1.5.0", "@acala-network/chopsticks-core@^1.2.1":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.5.0.tgz#cb616855160b6fff370ec21ecc613c958ff31777"
+  integrity sha512-DnWoga/1/Tiqyb4rSk62iZO6yR8/GdwBOmMDaAIxmxLsh6EEEFozhnw3wzcC9LeDX0uo/6YCejyiOcTTY+MT4w==
   dependencies:
-    "@acala-network/chopsticks-executor" "1.4.2"
+    "@acala-network/chopsticks-executor" "1.5.0"
     "@polkadot/rpc-provider" "^16.4.1"
     "@polkadot/types" "^16.4.1"
     "@polkadot/types-codec" "^16.4.1"
@@ -47,21 +47,21 @@
     zod "^3.25.76"
 
 "@acala-network/chopsticks-db@^1.2.1":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.4.2.tgz#7c8a24ad35a579f47a29494cff788c9b8c0e342f"
-  integrity sha512-TpoLP0nfUjf0Fx/3iV42ixJ8FbDYEaJUx+VMgTkRD6BN63/nPToKkAkCUURpyXHPP+jjgBkNgI5kAw5SuhSUWw==
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.5.0.tgz#4e67877a4a08f39a93727fc11393ffe1cdfa7bea"
+  integrity sha512-N27jXAzIUCSxuZE/c1DhUdDVUT8WaaljZG42MTKQ39dSdXIoiamkvUTiVwjuWvtYAvXpN0xovguCHdiCdiUXMA==
   dependencies:
-    "@acala-network/chopsticks-core" "1.4.2"
+    "@acala-network/chopsticks-core" "1.5.0"
     "@polkadot/util" "^14.0.1"
     idb "^8.0.3"
     reflect-metadata "^0.2.2"
     sqlite3 "^6.0.1"
-    typeorm "^0.3.26"
+    typeorm "^0.3.29"
 
-"@acala-network/chopsticks-executor@1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.4.2.tgz#4c2a5cfc6409c14317b31588364f6b69271a2a5b"
-  integrity sha512-hG+hjK9x1pIxCWL9CG5dSvsbz7gEsR4/ayW+P4ldGw0uFckQhzp+Gak57FYuka/PjQx09l4blv1BWDS/Lxq9fg==
+"@acala-network/chopsticks-executor@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.5.0.tgz#d13d503b71da914c5881611a9ecd909387989c24"
+  integrity sha512-rT+dOIdXGNJeZ19L7eKK8k3xvkRdaxLlu47NKTNTNxANzSl9Gs5FMx0a7hwWo6DIPuTj9SLBW9JK+8L4AnrGqA==
   dependencies:
     "@polkadot/util" "^14.0.1"
     "@polkadot/wasm-util" "^7.4.1"
@@ -4313,14 +4313,14 @@ bl@^4.0.3:
     readable-stream "^3.4.0"
 
 bn.js@^4.11.9:
-  version "4.12.3"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.3.tgz#2cc2c679188eb35b006f2d0d4710bed8437a769e"
-  integrity sha512-fGTi3gxV/23FTYdAoUtLYp6qySe2KE3teyZitipKNRuVYcBkoP/bB3guXN/XVKUe9mxCHXnc9C4ocyz8OmgN0g==
+  version "4.12.4"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.4.tgz#72627bb262f2385c51d313cd5e9596ca7cda77d6"
+  integrity sha512-njR1b+ixG2ufvL9Zn9JGneW+b5GV6jqpYyPPpg4QVt723b5kJPGUczkUyWEH9BwEA74UakJZ43I4FDLBF7ci0g==
 
 bn.js@^5.2.1, bn.js@~5.2.0, bn.js@~5.2.1:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.3.tgz#16a9e409616b23fef3ccbedb8d42f13bff80295e"
-  integrity sha512-EAcmnPkxpntVL+DS7bO1zhcZNvCkxqtkd0ZY53h06GNQ3DEkkGZ/gKgmDv6DdZQGj9BgfSPKtJJ7Dp1GPP8f7w==
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.4.tgz#1208fc250bb193fc5f8f0b5fa59e642e706f7103"
+  integrity sha512-QL7sb18rJ1PbdsKsqPA0guxL563vIMwRHgzNrW/uzQuRGN1Cjqd/wonUBAVqHox9KwzHA6vCbM0lXx3k4iQMow==
 
 body-parser@^2.2.1:
   version "2.3.0"
@@ -6223,9 +6223,9 @@ quick-format-unescaped@^4.0.3:
   integrity sha512-tYC1Q1hgyRuHgloV/YXs2w15unPVh8qfu/qCTfhTYamaw7fyhumKa2yGpdSo87vY32rIclj+4fWYQXUMs9EHvg==
 
 range-parser@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
-  integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.3.0.tgz#d7f19be812bb62721472b45d3be219ef09572b47"
+  integrity sha512-hek2mFQpPuI4E1BBKrSto+BU3e3x4xuarsbiwr3+lf7p44juvFMV0XFWQAP3xUyqXA4RrXLIoaSUGbSt056ZMw==
 
 raw-body@^3.0.2:
   version "3.0.2"
@@ -6843,9 +6843,9 @@ tar-stream@^2.1.4:
     readable-stream "^3.1.1"
 
 tar@^7.5.10, tar@^7.5.4:
-  version "7.5.16"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-7.5.16.tgz#f11e063afed4554f758049d082909e37d6b53ced"
-  integrity sha512-56adEpPMouktRlBLXiaYFFzZ/3+JXa8P9n7WbR+ibIjtviN55mEaOkiysCnPnWm+7kkui1Dn8J9l+g6zV8731w==
+  version "7.5.17"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-7.5.17.tgz#5eace4af68b088bb1d737ba9fffdacbbb70ba6e0"
+  integrity sha512-wPEBwzapC+2PaTYPH6e2L+cNOEE227S47wUYFqlegcs8zlLLmeb9Fcff1HVZY4Fwku/1Eyv38n7GYwB2aaS71g==
   dependencies:
     "@isaacs/fs-minipass" "^4.0.0"
     chownr "^3.0.0"
@@ -7049,7 +7049,7 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typeorm@^0.3.26:
+typeorm@^0.3.29:
   version "0.3.30"
   resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.3.30.tgz#79721a6de089b187b93b2dcd5c542847f07ac8b2"
   integrity sha512-8T35PzjefOdqc2ZR9mwLQj0pUGp6lQhMbK2EvVMwJVJWlaoHm0v/Q6dThNOZkFchD+0yMg8gwjKM28ePiLSXSQ==
