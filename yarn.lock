@@ -5395,9 +5395,9 @@ human-signals@^8.0.1:
   integrity sha512-eKCa6bwnJhvxj14kZk5NCPc6Hb6BdsU9DZcOnmQKSnO1VKrfV0zCvtttPZUsBvjmNDn8rpcJfpwSYnHBjc95MQ==
 
 iconv-lite@^0.7.2, iconv-lite@~0.7.0:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.7.2.tgz#d0bdeac3f12b4835b7359c2ad89c422a4d1cc72e"
-  integrity sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.7.3.tgz#84ee12f963e7de50bc01a13e160a078b3b0f415f"
+  integrity sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
@@ -7181,9 +7181,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.54.1"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.54.1.tgz#8c623c2d63863b1d85eda1d19d60927d28d54304"
-  integrity sha512-QRC3GBSnQit4pbb0sSBHRD9WYTPAffvhOqdqp8LgkRRktXZq8dePezZM/ZIkFwluLT7fMP90908goHQbtcga2A==
+  version "2.54.2"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.54.2.tgz#a52d83321deb5d5b0fb3dbfa5aa24306d8cbe753"
+  integrity sha512-o0+5dEAUekBMTbixXy2mKbSDPnwsCJ+8+mOeMBDjkuS9iM4fcr3yKUWb2zlOy2NKInkg3anl1W11sxYspLiXig==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
@@ -7192,7 +7192,7 @@ viem@^2.40.3:
     abitype "1.2.3"
     isows "1.0.7"
     ox "0.14.29"
-    ws "8.20.1"
+    ws "8.21.0"
 
 web-streams-polyfill@^3.0.3:
   version "3.3.3"
@@ -7345,11 +7345,6 @@ ws@8.18.0:
   version "8.18.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.18.0.tgz#0d7505a6eafe2b0e712d232b42279f53bc289bbc"
   integrity sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==
-
-ws@8.20.1:
-  version "8.20.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.20.1.tgz#91a9ae2b312ccf98e0a85ec499b48cef45ab0ddb"
-  integrity sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==
 
 ws@8.21.0, ws@^8.15.1, ws@^8.18.0, ws@^8.19.0, ws@^8.8.1:
   version "8.21.0"
