@@ -7181,9 +7181,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.54.3"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.54.3.tgz#f5aaf04f522ee81bfaab196d4e1e99a7c436e131"
-  integrity sha512-hHXV/MLeGx+A/kHwEejf4TBSmpq2rtpxR3qMH21+BL62CQBLfCoMxQ0RV3V3QLQ1mKC/sAFEci1u83JEq1TQ6g==
+  version "2.54.4"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.54.4.tgz#f3419a753be8b3a6bbc1ac86a53973b59361340c"
+  integrity sha512-ucXzbdRTjPCFo4cKU1n75h/013VTH/Xr+Kq9tV/e+f+GYmTwttgbQZbf9f7gLdKqgSuq80EmImAezwidm4QZtg==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
