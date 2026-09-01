@@ -5070,9 +5070,9 @@ extract-files@^9.0.0:
   integrity sha512-CvdFfHkC95B4bBBk36hcEmvdR2awOdhhVUYH6S/zrVj3477zven/fJMYg7121h4T1xHZC+tetUpubpAhxwI7hQ==
 
 fast-copy@^4.0.0:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-4.0.4.tgz#e569e2331ee6a9d67826c31aeb0e84b50bfb63e6"
-  integrity sha512-eVAiWVNPSEGIzDl5yPuLrx8fNMogScXvD9xp1Kzd41FjRIz2I3sSIcxsFeM5EzFfHAfobdvs8ZySffUopljvIA==
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-4.1.0.tgz#a0d5e2247bcaeed77b027be46d2b92d4d63dbcf5"
+  integrity sha512-f5oNUvGAmBPLP85im9czQ7fVWh3RfcIIIzyXrcXKmCiWoDn+CRmfsoQN3jmE5J+UEquj4Ugc1woTaxD0oa37Gg==
 
 fast-safe-stringify@^2.1.1:
   version "2.1.1"
@@ -7189,9 +7189,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.56.0"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.56.0.tgz#73398886ce5e5f0987cb337d46902e4795adf90a"
-  integrity sha512-JmkgIk4jN+im4oguLxwPv19pwSaGH9kcGSq25Ilm55106ULBBMNR3eWKKA0wZoeyLPSHIiOwZ4sGceEYEIq7LA==
+  version "2.56.1"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.56.1.tgz#983714e810c7cecfd0eb501f638b819706fefcbd"
+  integrity sha512-D+B87QRiACeWV4VOxn4Kwi4obV0fR2wGpX8bHTUlOnud3O8LTUyXvCqC83otmIww2dDv3vCl3V8a9jWApNP7KA==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
