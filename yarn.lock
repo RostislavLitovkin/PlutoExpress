@@ -5070,9 +5070,9 @@ extract-files@^9.0.0:
   integrity sha512-CvdFfHkC95B4bBBk36hcEmvdR2awOdhhVUYH6S/zrVj3477zven/fJMYg7121h4T1xHZC+tetUpubpAhxwI7hQ==
 
 fast-copy@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-4.1.0.tgz#a0d5e2247bcaeed77b027be46d2b92d4d63dbcf5"
-  integrity sha512-f5oNUvGAmBPLP85im9czQ7fVWh3RfcIIIzyXrcXKmCiWoDn+CRmfsoQN3jmE5J+UEquj4Ugc1woTaxD0oa37Gg==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/fast-copy/-/fast-copy-4.1.1.tgz#e39f2d403aa77a7e10628e3d8d4d8ed4b2ac5256"
+  integrity sha512-A4QTJmuiztpGtr6AMeJts9R4hbj2ZBUwtOaKrG6rw2y7t6+IaJKjz5M3XDs8BUznxDH43FVc6A0y/gWlMl4UtA==
 
 fast-safe-stringify@^2.1.1:
   version "2.1.1"
