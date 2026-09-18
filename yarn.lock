@@ -4028,11 +4028,11 @@
     form-data "^4.0.4"
 
 "@types/node@*":
-  version "22.20.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.20.3.tgz#f77d48b4cb336b4e6dc44850ddb6da69caade396"
-  integrity sha512-DZmzkmwHzXrLPAXPyKNDzlIwMMUZCVacoD25ywdy5YTKGbOx/2ld+Q38Im2zJ0vBuZP5Prd3VZutKZyXwkOS8A==
+  version "26.6.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-26.6.1.tgz#059fb87569c8b47a495c75ed8a884832c73eab1d"
+  integrity sha512-VqGJBMCtdhqkBUCcBLvywI0NJ+KLuVzgNnlBUNFOQjqVxzo2lxLUNg1DSey8+u2u6ktswSAxg+s68QLzWHNOuA==
   dependencies:
-    undici-types "~6.21.0"
+    undici-types "~8.9.0"
 
 "@types/node@22.7.5":
   version "22.7.5"
@@ -5210,9 +5210,9 @@ get-caller-file@^2.0.5:
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
 get-east-asian-width@^1.5.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/get-east-asian-width/-/get-east-asian-width-1.6.0.tgz#216900f91df11a8b2c198c3e1d93d6c035a776b9"
-  integrity sha512-QRbvDIbx6YklUe6RxeTeleMR0yv3cYH6PsPZHcnVn7xv7zO1BHN8r0XETu8n6Ye3Q+ahtSarc3WgtNWmehIBfA==
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/get-east-asian-width/-/get-east-asian-width-1.7.0.tgz#7ee99f0bd5ab7c622002deeabba232923726d1d4"
+  integrity sha512-XjH1AECxf0giL2V1aU8vKyRR2ppRUb5c0EvT7zuJTokQ74bNo52zOtghqdWIqrhUD79fo3x0WfKZdOqxF6LG1Q==
 
 get-intrinsic@^1.2.4, get-intrinsic@^1.2.5, get-intrinsic@^1.2.6, get-intrinsic@^1.3.0:
   version "1.3.0"
@@ -5954,10 +5954,10 @@ ora@^9.1.0:
     stdin-discarder "^0.3.2"
     string-width "^8.1.0"
 
-ox@0.14.44:
-  version "0.14.44"
-  resolved "https://registry.yarnpkg.com/ox/-/ox-0.14.44.tgz#58cda086c7e2d4c3ba39f08a33778c47de5e2dee"
-  integrity sha512-O54qXXHEk4ySamMSyBpI0AeBegS5frxU6+LA6Jb9Sf6kMOxcTNaxYmwZfpOu22DIQsdKfgQxHq8EsAGaoBQScA==
+ox@0.14.45:
+  version "0.14.45"
+  resolved "https://registry.yarnpkg.com/ox/-/ox-0.14.45.tgz#30c656f485d5fb07cb6d570292f9d1dc9cc3234a"
+  integrity sha512-jpsQ+p0JZh9mKCxxzxz0d5qFHZZg2/O9xW18IpEC/dNXXPVqmDJ0c//9RMz0CILkbSGPA42+cbU0fC/ghwJ03w==
   dependencies:
     "@adraffy/ens-normalize" "^1.11.0"
     "@noble/ciphers" "^1.3.0"
@@ -6692,9 +6692,9 @@ spdx-expression-parse@^3.0.0:
     spdx-license-ids "^3.0.0"
 
 spdx-license-ids@^3.0.0:
-  version "3.0.23"
-  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.23.tgz#b069e687b1291a32f126893ed76a27a745ee2133"
-  integrity sha512-CWLcCCH7VLu13TgOH+r8p1O/Znwhqv/dbb6lqWy67G+pT1kHmeD/+V36AVb/vq8QMIQwVShJ6Ssl5FPh0fuSdw==
+  version "3.0.24"
+  resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.24.tgz#550436df9dc7dcf5c29832ceda40256a9b00de3a"
+  integrity sha512-cLS9TtWkIQFyLkJ3/5aFQAOHOSKTlOs/7WDut/XPSdjom1fJhUdkepeJAKXa9Y05+FabHd0sti+Et559vDtkpQ==
 
 split2@^4.0.0:
   version "4.2.0"
@@ -7021,9 +7021,9 @@ type-fest@^4.23.0, type-fest@^4.39.1, type-fest@^4.6.0:
   integrity sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==
 
 type-fest@^5.4.4:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.9.0.tgz#0a4dd554d397f1a44447477eaeb3d1f4d8c7680f"
-  integrity sha512-yANm3Jr3GiJ1qgJlxGAVxTOIcEOk1rhQHamlXtnrCK7EHP4HeM9OGxtMg/W7HFdrVzw/ZWJKGVIJusVH85sLtw==
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-5.10.0.tgz#bf0131fdf662889c94c409d37402e364fb2016f7"
+  integrity sha512-NoSdpq/WEiAg5sjmBkmV/hfxv6HJH4NqPNrqjtSO5CwRmpsDfaf4begxW34KdJykH/l1yHtwBWQkCRdoXO8mPA==
   dependencies:
     tagged-tag "^1.0.0"
 
@@ -7113,6 +7113,11 @@ undici-types@~7.18.0:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-7.18.2.tgz#29357a89e7b7ca4aef3bf0fd3fd0cd73884229e9"
   integrity sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==
 
+undici-types@~8.9.0:
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-8.9.0.tgz#e240d97c8b5d85e5347ce73d25865c7906c1ec9f"
+  integrity sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==
+
 undici@^6.25.0:
   version "6.28.1"
   resolved "https://registry.yarnpkg.com/undici/-/undici-6.28.1.tgz#aa9d2c44aef3840bef80216f2a50f337543a3fbd"
@@ -7184,9 +7189,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.56.6"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.56.6.tgz#d93eb4fb217e593adda317f46bb9a6fbe4dc3e5e"
-  integrity sha512-wa7bJ8CiYE4iYUFUNWn5RrjV2qhrkye0wKeqp4vDW6WsJZ0lGDvoPB6Hb1p7Q+DGR+8uK+QLAE8eC+iQTkONHg==
+  version "2.56.7"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.56.7.tgz#700f2ae5f6686e96666d4270765365448629c494"
+  integrity sha512-8YXhttIOKikDnTLj4byvGQmF43Gi0FtEfxUWd6OqSJiuz9bxNYNGmzlS8ZaNiYSKUEfs5vmNprvwPIki9Lk4YA==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
@@ -7194,7 +7199,7 @@ viem@^2.40.3:
     "@scure/bip39" "1.6.0"
     abitype "1.2.3"
     isows "1.0.7"
-    ox "0.14.44"
+    ox "0.14.45"
     ws "8.21.0"
 
 web-streams-polyfill@^3.0.3:
