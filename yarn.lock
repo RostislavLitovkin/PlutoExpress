@@ -25,12 +25,12 @@
     "@babel/runtime" "^7.10.2"
     bignumber.js "^9.0.0"
 
-"@acala-network/chopsticks-core@1.5.1", "@acala-network/chopsticks-core@^1.2.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.5.1.tgz#008ea572ace38aa06a61f7defec18cd011f1d614"
-  integrity sha512-o0ZywjKIKPOuB5eCtHWAeGpfDfWUaAG0yJ5vvdkLepeHcxN7m88IoCoAiyDiit+A2SNZmnGy3ql79Xj4/QaFdw==
+"@acala-network/chopsticks-core@1.5.2", "@acala-network/chopsticks-core@^1.2.1":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-core/-/chopsticks-core-1.5.2.tgz#dd561b99e91e51186f54f03db631077d71750449"
+  integrity sha512-9cXE4BCFgHoq6ciBvofrYAfKNYv2SYEoZQn+6tQ8KGuCLlzAjF3hjZiXXmEhNsL2cVhq4PuBosY3wu3Nt/op7Q==
   dependencies:
-    "@acala-network/chopsticks-executor" "1.5.1"
+    "@acala-network/chopsticks-executor" "1.5.2"
     "@polkadot/rpc-provider" "^16.4.1"
     "@polkadot/types" "^16.4.1"
     "@polkadot/types-codec" "^16.4.1"
@@ -47,21 +47,21 @@
     zod "^3.25.76"
 
 "@acala-network/chopsticks-db@^1.2.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.5.1.tgz#675680ec10ef83237e384b7ddadc8ac4753ee0fd"
-  integrity sha512-zIoGrJhQtkajryTmwxyUk+EG+rMh013C2AzZFkUXpTBlWMg6QHkQtqyG61PL4N9Ynn4v1JIk7XDYz/DjLTELHA==
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-db/-/chopsticks-db-1.5.2.tgz#b0ad36ccdb5ac08742b7cee40946dd6d04dea2c5"
+  integrity sha512-D735FuGH/nuqGY0xkaAptANd8Viqv44+11K4bM3nJAik9Qg3w/lpa0EJ9GUs1AYhIudHIGq7mzNMTNDDMkYIZA==
   dependencies:
-    "@acala-network/chopsticks-core" "1.5.1"
+    "@acala-network/chopsticks-core" "1.5.2"
     "@polkadot/util" "^14.0.1"
     idb "^8.0.3"
     reflect-metadata "^0.2.2"
     sqlite3 "^6.0.1"
     typeorm "^0.3.31"
 
-"@acala-network/chopsticks-executor@1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.5.1.tgz#480b634f534616d52a035452e4d41c5e91c74a81"
-  integrity sha512-0dxkDaWdweAxhodfvYOQt8KzCxs5Jpo5xZ5N3YhGc/lMeIvDd6kEAxdpyLMgyiWjqyKdHph65a4CCHYc5jAqcg==
+"@acala-network/chopsticks-executor@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@acala-network/chopsticks-executor/-/chopsticks-executor-1.5.2.tgz#fd22ba9e25ca98646bf141a0db24baaeb074b014"
+  integrity sha512-xPS6EO1MAJkt954mWEz6KclNCuvdMxorrZRcSbQ1gw2iEfCILCfZul3dZhLBcwBIRzdWocu2rYkQ5Uw3Ksdqxw==
   dependencies:
     "@polkadot/util" "^14.0.1"
     "@polkadot/wasm-util" "^7.4.1"
