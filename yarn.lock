@@ -6654,9 +6654,9 @@ sort-keys@^5.0.0:
     is-plain-obj "^4.0.0"
 
 source-map-js@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.1.tgz#1ce5650fddd87abc099eda37dcff024c2667ae46"
-  integrity sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.2.tgz#79fb88d97535a21cb27162cb05d211b67acea4ab"
+  integrity sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==
 
 source-map@0.8.0-beta.0:
   version "0.8.0-beta.0"
@@ -7184,9 +7184,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.57.1"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.57.1.tgz#391be62fa7f04e3a42b27f4a03ba9414aad32761"
-  integrity sha512-eOV3fHnaMzkIFRefZg1icWztAKvBHg7RMKEH89ywY7hnyq1VxI4s/osXnTBViOsEZ7/LbbxU3w+JaIrbeIXRPQ==
+  version "2.57.2"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.57.2.tgz#15afad8116ad3ccaf904297b63444e2f4773460b"
+  integrity sha512-ZbPvu+5fvRsbFh+OymDz0GyEySsSco8GWrEAiHM4ckhEY1vJTPy0tcLVkn0cs70dPiUOjLxkQBnfVyt9YkJ7cA==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
