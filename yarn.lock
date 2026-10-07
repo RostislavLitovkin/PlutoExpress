@@ -5407,9 +5407,9 @@ iconv-lite@^0.7.2, iconv-lite@~0.7.0:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
 idb@^8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/idb/-/idb-8.0.3.tgz#c91e558f15a8d53f1d7f53a094d226fc3ad71fd9"
-  integrity sha512-LtwtVyVYO5BqRvcsKuB2iUMnHwPVByPCXFXOpuU96IZPPoPN6xjOGxZQ74pgSVVLQWtUOYgyeL4GE98BY5D3wg==
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/idb/-/idb-8.0.4.tgz#95405f3d62c81df23024c01cbb59d38494ecaa0b"
+  integrity sha512-jd0ITCrN+Zah4J7R/Z2jnR3W7A4BXDAjmo62MwWuSjxCiueUAf7X5rbodEdidWzeknwXHmLpdZkoiiCppNi30Q==
 
 ieee754@^1.1.13, ieee754@^1.2.1:
   version "1.2.1"
