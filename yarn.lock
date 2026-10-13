@@ -1482,9 +1482,9 @@
     "@lingui/core" "5.2.0"
 
 "@messageformat/parser@^5.0.0":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@messageformat/parser/-/parser-5.1.1.tgz#ca7d6c18e9f3f6b6bc984a465dac16da00106055"
-  integrity sha512-3p0YRGCcTUCYvBKLIxtDDyrJ0YijGIwrTRu1DT8gIviIDZru8H23+FkY6MJBzM1n9n20CiM4VeDYuBsrrwnLjg==
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@messageformat/parser/-/parser-5.2.0.tgz#8a476fadea25e1bb7835aaf806eb3f5ad2fb4f8a"
+  integrity sha512-sc3hNZ0JtC32GhL5nUgPbh2ilcwji4G+Vmj/vhMd8hZaH//NDOvkfwKK1mFnRWG5h2DpksN8xr/HB5/+vMg3iw==
   dependencies:
     moo "^0.5.1"
 
@@ -3821,16 +3821,16 @@
     tslib "^2.8.0"
 
 "@tanstack/react-virtual@^3.8.1":
-  version "3.14.15"
-  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.14.15.tgz#47e72ca5fae5cad92f706aed0241563b66a12668"
-  integrity sha512-FXU72FW6a3yRtOpn7ollcsmPSi7ShMJECiqTpnCG2n2R8FIPrZrPYPAUmETGO8OCojATFbpLSDMuYuXX9mUAjg==
+  version "3.14.17"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.14.17.tgz#6be408ba8259523eaa3a889e7acde8ed6a9f5341"
+  integrity sha512-b7b5LwydgQAWcsAWEZyd3iZkN5/QcC6S0K5E1zNheyFoSZl7E78foepGeDHlX2+JuXilA+VIGGFsUYPFddOrig==
   dependencies:
-    "@tanstack/virtual-core" "3.19.0"
+    "@tanstack/virtual-core" "3.19.2"
 
-"@tanstack/virtual-core@3.19.0":
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.19.0.tgz#64ee995cf4615928c238a3db2038657c0b7f9116"
-  integrity sha512-6k6+BXoM01iJTfqH5hvih0Kj49x130wRzty1muE1hBJJm5/P8h3aEYEtQPa4iYE239nF4i6UL/KIIuQI3zG4sw==
+"@tanstack/virtual-core@3.19.2":
+  version "3.19.2"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.19.2.tgz#aac1adaa1a9a873fe758d3c8d06f8b872185cef1"
+  integrity sha512-Ch+e8t097FdTfuihfRwBMqz/OfRZKHOH/C213dbM1lXDZ8bv6r330Bcc9k9XCrP6NkoMYy0/ZCHcddOAPihW4w==
 
 "@thi.ng/api@^8.12.28":
   version "8.12.28"
@@ -5771,7 +5771,7 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@^3.3.19:
+nanoid@^3.3.20:
   version "3.3.20"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.20.tgz#dfd4444d85aa10111ef66ba85ed72e08ba0855d8"
   integrity sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==
@@ -5949,10 +5949,10 @@ ora@^9.1.0:
     stdin-discarder "^0.3.2"
     string-width "^8.1.0"
 
-ox@0.14.54:
-  version "0.14.54"
-  resolved "https://registry.yarnpkg.com/ox/-/ox-0.14.54.tgz#e87c715a6ce411e95c736413a73229305eee1851"
-  integrity sha512-52PGH6ldJmWY9+iy/TBSJUsCSy5NmLvkVBYTINmO8srsjRrCmCdO575kGizmZ1jpNQ1gnlpVwiciIpU37fcULA==
+ox@0.14.56:
+  version "0.14.56"
+  resolved "https://registry.yarnpkg.com/ox/-/ox-0.14.56.tgz#f3020dde5b7e34af9a8cf85883044853ec87b3f0"
+  integrity sha512-Feinlj+deWEam6RIwurRE+eHZ2N3hoUb3AAjQ10BmxRCYIymfqNkv0eZ+4ln4GkgDmSGLD2rGtTMqsFYSVDC6w==
   dependencies:
     "@adraffy/ens-normalize" "^1.11.0"
     "@noble/ciphers" "^1.3.0"
@@ -6137,11 +6137,11 @@ postcss-load-config@^6.0.1:
     lilconfig "^3.1.1"
 
 postcss@^8.5.6:
-  version "8.5.29"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.29.tgz#086a0ded2c0257c71efb8c68776b477774714b4a"
-  integrity sha512-49cGhUbXj8Qenv0iTMxA1cFBzxXoctpC9Ujd77t1WcbJIr6nF/eI7g/8MgxrYldFRuAXvja7xQRwavoW7kgrxQ==
+  version "8.5.30"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.30.tgz#f76f192357d2b7026b651fd2c7baa60d05325a9e"
+  integrity sha512-zkd+e9S1AQHhmaBKye9zlFHWjOwVgqXl1q3ECYy8561K7qxR2cREf/STLskulBFd78k6AOFeA+ff1TtEzk9bAA==
   dependencies:
-    nanoid "^3.3.19"
+    nanoid "^3.3.20"
     picocolors "^1.1.1"
     source-map-js "^1.2.2"
 
@@ -7186,9 +7186,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.57.4"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.57.4.tgz#8e516b4beea638474b9a5d088bfe6b60141844d6"
-  integrity sha512-ro+8AKrcGU6tPfou0gBRYv6bxnU3tPxxJGY4qpJwjiR40eHCWzeGhrAgYMlIncFtlnry2/yGjz57WOC67oshCQ==
+  version "2.57.5"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.57.5.tgz#d028e2de5c6a58a6ab525def34bdb976d83c4f0e"
+  integrity sha512-BaUdS5lJJTxr6hJX17K0AjHbgUhsolsqH8CCbTq1WMunW/I/Siwc9VrTwccCcNPppgqa/gY4TqK8Zl8LLmlTlw==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
@@ -7196,7 +7196,7 @@ viem@^2.40.3:
     "@scure/bip39" "1.6.0"
     abitype "1.2.3"
     isows "1.0.7"
-    ox "0.14.54"
+    ox "0.14.56"
     ws "8.21.0"
 
 web-streams-polyfill@^3.0.3:
