@@ -5808,9 +5808,9 @@ nock@^13.3.0, nock@^13.5.0, nock@^13.5.4, nock@^13.5.5:
     propagate "^2.0.0"
 
 node-abi@^3.3.0:
-  version "3.99.0"
-  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.99.0.tgz#0f976005a65876550058fed92a7b5c677d64f0f1"
-  integrity sha512-lLdwkeg2XUVPTHqWjPltTxH81zbQNbUWC+AEb9ni50KjxkUzAAx1HGtMT21sbntzfUGfIphhcklvs3imJeqDXw==
+  version "3.100.0"
+  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.100.0.tgz#31aa9623841051d14f52415557e18101bc0de7ca"
+  integrity sha512-KNU/E0VW9T1ndOAEWNlWtxhoBSF7hqe+dMSrRPK6+PfyL2s2AcfwnXCAOke4DNXOsweivNT6/7eFHwkxWblZew==
   dependencies:
     semver "^7.3.5"
 
@@ -7186,9 +7186,9 @@ vary@^1.1.2:
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 viem@^2.40.3:
-  version "2.57.7"
-  resolved "https://registry.yarnpkg.com/viem/-/viem-2.57.7.tgz#31c62217c90b937f7f8aa39cc3459d21811e5d8f"
-  integrity sha512-x3UqqrcQuESaRVK6a0BvNmoNP0SVhu913uxEAxYLJx1lNYnj6ylTntfUdakCUKjk1+T+63gkdwFGJQ2O5C/nRw==
+  version "2.57.8"
+  resolved "https://registry.yarnpkg.com/viem/-/viem-2.57.8.tgz#70a0e4f2e32630c5e5616f0dcfb85ea90d09b895"
+  integrity sha512-WYxDGltqjnHxM7sMZ/IBYpesbrEDDhLcmsbUE5zIPjVYOtP8gztcOhiL7OHZHJbI6vfuWNW4NCR5Gdddw+/Ovw==
   dependencies:
     "@noble/curves" "1.9.1"
     "@noble/hashes" "1.8.0"
