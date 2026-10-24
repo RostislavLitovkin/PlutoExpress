@@ -5808,9 +5808,9 @@ nock@^13.3.0, nock@^13.5.0, nock@^13.5.4, nock@^13.5.5:
     propagate "^2.0.0"
 
 node-abi@^3.3.0:
-  version "3.100.0"
-  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.100.0.tgz#31aa9623841051d14f52415557e18101bc0de7ca"
-  integrity sha512-KNU/E0VW9T1ndOAEWNlWtxhoBSF7hqe+dMSrRPK6+PfyL2s2AcfwnXCAOke4DNXOsweivNT6/7eFHwkxWblZew==
+  version "3.101.0"
+  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.101.0.tgz#3c99775cb0a4ddf4f3f0dad2a9ad940d67ef0052"
+  integrity sha512-bkb/RkuWCE64eWu1PCh3Fu2pGc9mKRs+kOE+FU2bGHRYlQa86/D321DSATV54AsCQMKz3/xSt9sRgraZTpqdhQ==
   dependencies:
     semver "^7.3.5"
 
